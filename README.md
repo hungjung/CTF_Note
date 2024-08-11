@@ -1,5 +1,7 @@
 # CTF Note
 
+[Detail Note](https://hackmd.io/@nfu-johnny/B1Ju_BMPR)
+
 ## _nmap_
 
 網路設備及服務掃描
@@ -92,7 +94,7 @@ net localgroup Administrators
 
 ## _reg add_
 
-新增機碼
+新增機碼開啟RDP服務
 
 ```sh
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
@@ -218,6 +220,38 @@ smbclient -U "kingdom\king"  //10.10.10.20/C$
 dir xxx.xxx /s/a/p   
 # Find Files in Linux Command Line
 find / -name xxx.xxx
+# Displays the world executable folders.
+find / -perm -o x -type d 2>/dev/null 
+# Displays the “suid” Bit set files.
+find / -perm -u=s -type f 2>/dev/null
+```
+
+## _unshadow_
+
+```sh
+sudo su
+unshadow /etc/passwd /etc/shadow > mypasswd
+john mypasswd --show
+```
+
+# _WireShark_
+
+```sh
+# 技巧1：Statistics > Protocol Hierarchy
+# 技巧2：Statistics > Coversations
+# 技巧3：Analyze > Follow > TCP Stream 
+# OT
+modbus
+modbus.func_code==1
+# IoT
+mqtt
+mqtt.msgtype == 3
+# (How many machines) or Go to statistics IPv4 addresses--> Source and Destination ---> Then you can apply the filter given
+tcp.flags.syn == 1 and tcp.flags.ack == 0
+# (Which machine for dos)
+tcp.flags.syn == 1
+# (for passwords) or click tools ---> credentials
+http.request.method == POST
 ```
 
 ## _others_
