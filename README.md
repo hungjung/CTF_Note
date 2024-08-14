@@ -1,6 +1,9 @@
 # CTF Note
 
-[Detail Note](https://hackmd.io/@nfu-johnny/B1Ju_BMPR)
+* [Detail Note](https://hackmd.io/@nfu-johnny/B1Ju_BMPR)
+* [Red Team Notes - Pentesting Cheatsheets](https://www.ired.team/offensive-security-experiments/offensive-security-cheetsheets)
+* [HAUSEC - Pentesting Cheatsheet](https://hausec.com/pentesting-cheatsheet/)
+* [資安職能筆記 - 系統及網站滲透測試](https://hackmd.io/@nfu-johnny/H1lpm_ira)
 
 ## _nmap_
 
@@ -31,6 +34,7 @@ sudo nmap -sV --script http-wordpress-* 10.10.10.16
 SNMP 設備列舉
 
 ```sh
+onesixtyone x.x.x.x/x
 sudo snmp-check 10.10.10.16
 ```
 
@@ -283,7 +287,6 @@ set USERNAME admin
 
 ```sh
 njRAT         //trajon
-SNOW          //space
 OpenStego     //picture
 HashMyFiles
 VeraCrypt
