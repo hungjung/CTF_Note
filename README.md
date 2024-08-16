@@ -173,6 +173,8 @@ weevely http://ip:port/backdoor.php king  //連接
 WordPress安全性掃描工具
 
 ```sh
+# 查看指令使用方式
+wpscan -h
 # 列舉使用者
 wpscan --url http://url -e u 
 # 破密
@@ -242,6 +244,8 @@ snow -C -p pass -m "message" text1.txt text2.txt
 snow -C -p pass text2.txt text3.txt
 ```
 
+![image](https://hackmd.io/_uploads/BJwSCx8wC.png)
+
 ## _Mount NFS & NFS提權_
 
 ```sh
@@ -288,6 +292,9 @@ john mypasswd --show
 ```
 
 ## _WireShark_
+
+* [Modbus function code](https://felo.ai/search/shTci4feDgM2wK-ppsVLO)
+* [How to Use Wireshark for MQTT Analysis: An In-depth Guide](https://cedalo.com/blog/wireshark-mqtt-guide/)
 
 ```sh
 # 技巧1：Statistics > Protocol Hierarchy
@@ -340,15 +347,22 @@ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 
 ## _others_
 
+* [行為分析](https://ithelp.ithome.com.tw/articles/10188209)
+* [PEiD工具主要的功能是什麼？](https://felo.ai/search/RGkYWRa-6J16ufLhcwbbT)
+
 ```sh
-njRAT         //trajon
-OpenStego     //picture
-HashMyFiles
-VeraCrypt
-CrypTool
-ophcrack
 visudo
-https://github.com/horsicq/DIE-engine/releases  //DIE
+
+Moudule 06 / OpenStego     //picture
+Moudule 06 / ophcrack
+
+Module 07 / Trojans Types /njRAT         //trajon
+Module 07 / Malware Analysis Tools / PEiD
+Module 07 / Malware Analysis Tools / DIE
+
+Moudule 20 / HashMyFiles
+Moudule 20 / VeraCrypt
+Moudule 20 / CrypTool
 ```
 
 ## License
