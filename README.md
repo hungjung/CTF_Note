@@ -349,6 +349,7 @@ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 
 * [行為分析](https://ithelp.ithome.com.tw/articles/10188209)
 * [PEiD工具主要的功能是什麼？](https://felo.ai/search/RGkYWRa-6J16ufLhcwbbT)
+* [sudo](https://osslab.tw/books/linux-administration/page/sudo)
 
 ```sh
 visudo
