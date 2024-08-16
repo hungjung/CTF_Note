@@ -118,8 +118,8 @@ netstat -an | findstr :3389
 
 ## _web content discovery_
 
-[Ffuf爆破神器](https://blog.csdn.net/weixin_44288604/article/details/128444485)
-[FFUF Cheat Sheet](https://cheatsheet.haax.fr/web-pentest/tools/ffuf/)
+* [Ffuf爆破神器](https://blog.csdn.net/weixin_44288604/article/details/128444485)
+* [FFUF Cheat Sheet](https://cheatsheet.haax.fr/web-pentest/tools/ffuf/)
 
 ```sh
 #測試網站程式檔名
