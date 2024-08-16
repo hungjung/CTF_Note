@@ -350,9 +350,15 @@ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 * [行為分析](https://ithelp.ithome.com.tw/articles/10188209)
 * [PEiD工具主要的功能是什麼？](https://felo.ai/search/RGkYWRa-6J16ufLhcwbbT)
 * [sudo](https://osslab.tw/books/linux-administration/page/sudo)
+* [‘strings’ Linux Command | Extracting Strings in Binary Files](https://ioflood.com/blog/strings-linux-command/)
+* [ExifTool Command-Line Examples](https://exiftool.org/examples.html)
+* [CyberChef](https://gchq.github.io/CyberChef/)
+* [crackstation](https://crackstation.net/)
 
 ```sh
 visudo
+
+openvas >> scans >> tasks
 
 Moudule 06 / OpenStego     //picture
 Moudule 06 / ophcrack
